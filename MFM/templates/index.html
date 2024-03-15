@@ -122,7 +122,7 @@
                 if (trashMode == false) {
                     $.ajax({
                         type: "GET",
-                        url: "/api/list",
+                        url: "/GET/list",
                         data: {'sortMode': sortMode},
                         success: function(response) {
                             if (response['result'] != 'success') {
@@ -138,7 +138,7 @@
                 } else {
                     $.ajax({
                         type: "GET",
-                        url: "/api/list/trash",
+                        url: "/GET/trash",
                         data: {},
                         success: function(response) {
                             if(response['result'] != success) {
@@ -213,7 +213,7 @@
             function likeMovie(Title) {
                 $.ajax({
                     type: "POST",
-                    url: "/api/like",
+                    url: "/POST/list/1",
                     data: {title_give:Title},
                     success: function (response) {
                         if (response['result'] == 'success') {
@@ -231,7 +231,7 @@
             function trashMovie(Title) {
                 $.ajax({
                     type: "POST",
-                    url: "/api/trash",
+                    url: "/POST/list/2",
                     data: {title_give:Title},
                     success: function (response) {
                         if(response['result'] == 'success') {
@@ -249,7 +249,7 @@
             function restoreMovie(Title) {
                 $.ajax({
                     type: "POST",
-                    url: "/api/trash/restore",
+                    url: "/POST/trash/1",
                     data: {title_give:Title},
                     success: function (response) {
                         if(response['result'] == 'success') {
@@ -268,7 +268,7 @@
             function deleteMovie(Title) {
                 $.ajax({
                     type: "POST",
-                    url: "/api/trash/delete",
+                    url: "/POST/trash/2",
                     data: {title_give:Title},
                     success: function (response) {
                         if(response['result'] == 'success') {
