@@ -56,7 +56,7 @@ def home():
 
 
 # API #2: 휴지통에 버려지지 않은 영화 목록을 반환합니다.
-@app.route('/api/list', methods=['GET'])
+@app.route('/GET/list', methods=['GET'])
 def show_movies():
     # client 에서 요청한 정렬 방식이 있는지를 확인합니다. 없다면 기본으로 좋아요 순으로 정렬합니다.
     sortMode = request.args.get('sortMode', 'likes')
@@ -79,7 +79,7 @@ def show_movies():
 
 
 # API #3: 영화에 좋아요 숫자를 하나 올립니다.
-@app.route('/api/like', methods=['POST'])
+@app.route('/POST/list/1', methods=['POST'])
 def like_movie():
     # 1. movies 목록에서 find_one으로 영화 하나를 찾습니다.
     #    TODO: 영화 하나만 찾도록 다음 코드를 직접 수정해보세요!!!
@@ -101,7 +101,7 @@ def like_movie():
         return jsonify({'result': 'failure'})
 
 
-@app.route('/api/list/trash', methods=['GET'])
+@app.route('/GET/trash', methods=['GET'])
 def show_movies():
     # client 에서 요청한 정렬 방식이 있는지를 확인합니다. 없다면 기본으로 좋아요 순으로 정렬합니다.
     sortMode = request.args.get('sortMode', 'likes')
@@ -123,7 +123,7 @@ def show_movies():
     return jsonify({'result': 'success', 'movies_list': movies})
 
 
-@app.route('/api/trash', methods=['POST'])
+@app.route('/POST/list/2', methods=['POST'])
 def trash_movie():
     title_receive = request.form['title_give']
     movie = db.movies.find_one({'title':title_receive})
@@ -136,7 +136,7 @@ def trash_movie():
         return jsonify({'result': 'failure'})
     
 
-@app.route('/api/trash/restore', methods=['POST'])
+@app.route('/POST/trash/1', methods=['POST'])
 def restore_movie():
     title_receive = request.form['title_give']
     movie = db.movies.find_one({'title':title_receive})
@@ -149,7 +149,7 @@ def restore_movie():
         return jsonify({'result': 'failure'})
 
 
-@app.route('/api/trash/delete', methods=['POST'])
+@app.route('/POST/trash/2', methods=['POST'])
 def delete_movie():
     title_receive = request.form['title_give']
     movie = db.movies.find_one({'title':title_receive})
