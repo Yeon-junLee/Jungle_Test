@@ -79,7 +79,7 @@ def show_movies():
 
 
 # API #3: 영화에 좋아요 숫자를 하나 올립니다.
-@app.route('/api/like', methods=['POST'])
+@app.route('/api/like', methods=['GET'])
 def like_movie():
     # 1. movies 목록에서 find_one으로 영화 하나를 찾습니다.
     #    TODO: 영화 하나만 찾도록 다음 코드를 직접 수정해보세요!!!
@@ -123,7 +123,7 @@ def show_movies():
     return jsonify({'result': 'success', 'movies_list': movies})
 
 
-@app.route('/api/trash', methods=['POST'])
+@app.route('/api/trash', methods=['GET'])
 def trash_movie():
     title_receive = request.form['title_give']
     movie = db.movies.find_one({'title':title_receive})
@@ -136,7 +136,7 @@ def trash_movie():
         return jsonify({'result': 'failure'})
     
 
-@app.route('/api/trash/restore', methods=['POST'])
+@app.route('/api/trash/restore', methods=['GET'])
 def restore_movie():
     title_receive = request.form['title_give']
     movie = db.movies.find_one({'title':title_receive})
@@ -149,7 +149,7 @@ def restore_movie():
         return jsonify({'result': 'failure'})
 
 
-@app.route('/api/trash/delete', methods=['POST'])
+@app.route('/api/trash/delete', methods=['GET'])
 def delete_movie():
     title_receive = request.form['title_give']
     movie = db.movies.find_one({'title':title_receive})
